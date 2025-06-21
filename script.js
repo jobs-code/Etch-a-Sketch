@@ -23,7 +23,7 @@ function canvasDraw(pix){
     box.addEventListener('mouseenter', (e)=>{
         box.style.backgroundColor = colorSelect();
         box.style.opacity = op;
-        op += 0.01;
+        op += 0.001;
         
      });
      
