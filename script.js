@@ -8,16 +8,23 @@ btn.addEventListener('click', ()=>{
     while (uin == 0 || uin > 100){
         uin = prompt("Enter num of box (max :100)");
     }
+    container.innerHTML='';
     canvasDraw(uin);
 } )
 let op = 0.1;
 function canvasDraw(pix){
-    for (let i = 0;  i < pix; i++){
-        let box = document.createElement("div");
-        box.className="square";
-        box.id= i+1;
-        container.appendChild(box);
+    for(let i = 0; i < pix; i++){
+        for (let j = 0;  j < pix; j++){
+            let box = document.createElement("div");
+            let bsize = 900 / pix;
+            console.log(bsize);
+            box.className="square";
+            box.style.width = `${bsize}px`;
+            box.style.height = `${bsize}px`;
+            box.id= j+1;
+            container.appendChild(box);
     }
+}
     let boxes = document.querySelectorAll(".square");
     boxes.forEach(box => {
     box.addEventListener('mouseenter', (e)=>{
@@ -28,6 +35,12 @@ function canvasDraw(pix){
      });
      
     });
+    rbtn.addEventListener('click', ()=>{
+        boxes.forEach(box => {
+            box.style.opacity = 1;
+            box.style.backgroundColor = "black";
+        });
+})
 
 };
 
@@ -36,6 +49,9 @@ function colorSelect(){
     return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6,'0');
 }
 
+let rbtn = document.querySelector("#rb");
 
 
 
+
+canvasDraw(10);

@@ -2,8 +2,8 @@ body {
     display : flex;
     flex-direction:column;
     align-items:center;
-    color:white;
-    background-color:grey;
+    /* color:wh; */
+    /* background-color:; */
 
 }
 button{
@@ -14,14 +14,14 @@ button{
 #container{
     display:flex;
     flex-wrap: wrap;
-    /* height : 200px; */
-    width : 500px;
-    align-items : center;
+    width : 900px;
+    align-items : flex-start;
+    border: solid 5px black;
 }
 
 .square{
-    height: 16px;
-    width : 16px;
-    padding:15px;
+    box-sizing : border-box;
     background-color : black;
+    /* border:solid white; */
+
 }
