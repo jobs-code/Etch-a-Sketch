@@ -11,7 +11,7 @@ btn.addEventListener('click', ()=>{
     container.innerHTML='';
     canvasDraw(uin);
 } )
-let op = 0.1;
+
 function canvasDraw(pix){
     for(let i = 0; i < pix; i++){
         for (let j = 0;  j < pix; j++){
@@ -28,30 +28,60 @@ function canvasDraw(pix){
     let boxes = document.querySelectorAll(".square");
     boxes.forEach(box => {
     box.addEventListener('mouseenter', (e)=>{
-        box.style.backgroundColor = colorSelect();
-        box.style.opacity = op;
-        op += 0.001;
+        let op = parseFloat(box.dataset.opacity) || 0;
+        if (op < 1){
+            op += 0.05;
+            box.dataset.opacity = op;
+            box.style.backgroundColor = colorSelect();
+            box.style.opacity = op;
+        }
+        else{
+            box.style.backgroundColor = colorSelect();
+        }
         
      });
      
     });
     rbtn.addEventListener('click', ()=>{
         boxes.forEach(box => {
+           
             box.style.opacity = 1;
-            box.style.backgroundColor = "black";
+            box.style.backgroundColor = "white";
+             box.dataset.opacity = 0;
         });
 })
+
+
 
 };
 
 // func for random color
 function colorSelect(){
-    return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6,'0');
+    if (ctoggle.dataset.enabled === "true"){
+        return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6,'0');
+    }
+    else{
+        return "black";
+    }
 }
 
 let rbtn = document.querySelector("#rb");
+let ctoggle = document.querySelector("#ct");
+ctoggle.dataset.enabled = "false";
 
+console.log(ctoggle.dataset.enabled);
 
+// function to toggle colorize
+ctoggle.addEventListener('click', ()=>{
 
+    if (ctoggle.dataset.enabled === "true"){
+        ctoggle.dataset.enabled = "false";
+        ctoggle.textContent = "Colorize OFF";
+    }else{
+        ctoggle.dataset.enabled = "true";
+        ctoggle.textContent = "Colorize ON";
+    }
+    console.log(ctoggle.dataset.enabled);
+});
 
 canvasDraw(10);
