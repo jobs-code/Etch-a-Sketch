@@ -22,8 +22,10 @@ A browser-based sketchpad that mimics the classic Etch-a-Sketch toy. Move your m
 ## 🧠 About
 
 This project creates a 16x16 grid using JavaScript. As the user hovers over each square, it changes color, simulating drawing behavior. Users can also reset and resize the grid dynamically (up to 100x100). It’s a hands-on demonstration of dynamic DOM manipulation and CSS Flexbox.
-![Operation Example](s1.png)
+
 ---
+
+![Operation Example](s1.png)
 
 ## ✨ Features
 
